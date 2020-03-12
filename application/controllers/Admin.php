@@ -8,8 +8,7 @@ class Admin extends CI_Controller
         parent::__construct();
         // $this->load->model('Auth/Model_user');
         if($this->session->userdata('login_status')!=TRUE)
-		{	
-			$this->session->set_flashdata('msg', 'Mohon Login Dahulu');
+		{				
 			redirect(site_url('auth'));
         }
         $this->load->model('Model_admin');
@@ -79,5 +78,6 @@ class Admin extends CI_Controller
 	{
 		$data = $this->Model_admin->hapusData();
 		json_encode($data);
-	}
+    }
+    
 }

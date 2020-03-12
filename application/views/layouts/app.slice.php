@@ -32,10 +32,15 @@
 			<hr class="sidebar-divider d-none d-md-block">
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item active">
-				<a class="nav-link" href="tables.html">
+			<li class="nav-item @if($this->uri->segment(1) == 'admin')active@endif">
+				<a class="nav-link" href="{{site_url('admin')}}">
 					<i class="fas fa-fw fa-table"></i>
 					<span>Tables</span></a>
+			</li>
+			<li class="nav-item @if($this->uri->segment(1) == 'akun')active@endif">
+				<a class="nav-link" href="{{site_url('akun')}}">
+					<i class="fas fa-fw fa-user"></i>
+					<span>Manajemen Akun</span></a>
 			</li>
 
 			<!-- Divider -->
