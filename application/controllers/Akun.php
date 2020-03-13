@@ -59,8 +59,7 @@ class Akun extends CI_Controller
         {
             $output['id']       = $row->id_user;
             $output['email']    = $row->email;
-            $output['username'] = $row->username;
-            // $output['password'] = $row->password;
+            $output['username'] = $row->username;            
             $output['nama'] = $row->full_name;   
             $output['nomor_hp'] = $row->phone;
             $output['level_akses'] = $row->role;

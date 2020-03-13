@@ -18,7 +18,7 @@ class Auth extends CI_Controller
         }        
         elseif($this->session->userdata('login_status') == TRUE)
         {
-            redirect(site_url('admin'));
+            redirect(site_url('dashboard'));
         }
     }
 
@@ -26,7 +26,7 @@ class Auth extends CI_Controller
     {
         if($this->session->userdata('login_status') == TRUE)
         {
-            redirect(site_url('admin'));
+            redirect(site_url('dashboard'));
         }
 
         $db = $this->Model_user->dataLogin($this->input->post('username'));
@@ -44,11 +44,12 @@ class Auth extends CI_Controller
                     'email' => $row->email,
                     'phone' => $row->phone,
                     'password' => $row->password,
+                    'level_akses' => $row->role,
                     'login_status' => TRUE
 
                 );
             $this->session->set_userdata($sesi);
-            redirect(site_url('admin'),'refresh');
+            redirect(site_url('dashboard'),'refresh');
             }            
             else
             {

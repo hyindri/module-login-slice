@@ -227,7 +227,7 @@
 			"responsive": true,
 			"order": [],
 			"ajax": {
-				url: "{{base_url('admin/ambil_data')}}",
+				url: "{{base_url('dashboard/ambil_data')}}",
 				type: "POST"
 			},
 			"pageLength": 10,
@@ -236,7 +236,7 @@
 		$('#tambah-mahasiswa').submit('click', function () {
 			$.ajax({
 				type: 'POST',
-				url: "{{base_url('admin/tambah_data')}}",
+				url: "{{base_url('dashboard/tambah_data')}}",
 				data: new FormData(this),
 				processData: false,
 				contentType: false,
@@ -255,7 +255,7 @@
 		$('.table-mahasiswa').on('click', '#get-ubahModal', function () {
 			let id_mahasiswa = $(this).data('id');
 			$.ajax({
-				url: "{{base_url('admin/ambil_satu_data')}}",
+				url: "{{base_url('dashboard/ambil_satu_data')}}",
 				method: "POST",
 				data: {
 					id_mahasiswa: id_mahasiswa
@@ -275,7 +275,7 @@
 		$('#ubah-mahasiswa').submit('click', function () {
 			$.ajax({
 				type: "POST",
-				url: "{{base_url('admin/ubah_data')}}",
+				url: "{{base_url('dashboard/ubah_data')}}",
 				data: new FormData(this),
 				processData: false,
 				contentType: false,
@@ -294,7 +294,7 @@
 		$('.table-mahasiswa').on('click', '#get-hapusModal', function () {
 			let id_mahasiswa = $(this).data('id');
 			$.ajax({
-				url: "{{base_url('admin/ambil_satu_data')}}",
+				url: "{{base_url('dashboard/ambil_satu_data')}}",
 				method: "POST",
 				data: {
 					id_mahasiswa: id_mahasiswa
@@ -311,7 +311,7 @@
 		$('#hapus-mahasiswa').submit('click', function () {
 			$.ajax({
 				type: 'POST',
-				url: "{{base_url('admin/hapus_data')}}",
+				url: "{{base_url('dashboard/hapus_data')}}",
 				data: new FormData(this),
 				processData: false,
 				contentType: false,

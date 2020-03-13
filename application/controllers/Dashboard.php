@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Dashboard extends CI_Controller
 {
     function __construct()
     {
@@ -17,7 +17,7 @@ class Admin extends CI_Controller
 
     function index()
     {
-        view('admin.index');
+        view('dashboard.index');
     }
 
     function ambil_data()

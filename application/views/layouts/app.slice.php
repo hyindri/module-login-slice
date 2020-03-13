@@ -32,16 +32,18 @@
 			<hr class="sidebar-divider d-none d-md-block">
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item @if($this->uri->segment(1) == 'admin')active@endif">
-				<a class="nav-link" href="{{site_url('admin')}}">
+			<li class="nav-item @if($this->uri->segment(1) == 'dashboard')active@endif">
+				<a class="nav-link" href="{{site_url('dashboard')}}">
 					<i class="fas fa-fw fa-table"></i>
 					<span>Tables</span></a>
 			</li>
+			@if( $this->session->userdata('level_akses') == 'admin')
 			<li class="nav-item @if($this->uri->segment(1) == 'akun')active@endif">
 				<a class="nav-link" href="{{site_url('akun')}}">
 					<i class="fas fa-fw fa-user"></i>
 					<span>Manajemen Akun</span></a>
 			</li>
+			@endif
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
