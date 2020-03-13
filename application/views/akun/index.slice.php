@@ -17,7 +17,7 @@
 						<th>Email</th>
 						<th>Nama</th>
 						<th>No. Telp</th>
-                        <th>Level Akses</th>
+						<th>Level Akses</th>
 						<th width="5%">Aksi</th>
 					</tr>
 				</thead>
@@ -36,13 +36,30 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			{{form_open('',['id' => 'tambah-mahasiswa','role' => 'form'])}}
+			{{form_open('',['id' => 'tambah-akun','role' => 'form'])}}
 			<div class="modal-body">
 				@php
-				$nim = [
-				'type' => 'number',
-				'id' => 'id_nim',
-				'name' => 'nim',
+
+				$email = [
+				'type' => 'email',
+				'id' => 'id_email',
+				'name' => 'email',
+				'class' => 'form-control',
+				'required' => 'required'
+				];
+
+				$username = [
+				'type' => 'text',
+				'id' => 'id_username',
+				'name' => 'username',
+				'class' => 'form-control',
+				'required' => 'required'
+				];
+
+				$password = [
+				'type' => 'password',
+				'id' => 'id_password',
+				'name' => 'password',
 				'class' => 'form-control',
 				'required' => 'required'
 				];
@@ -55,39 +72,59 @@
 				'required' => 'required'
 				];
 
-				$jurusan = [
-				'type' => 'text',
-				'id' => 'id_jurusan',
-				'name' => 'jurusan',
+				$hp = [
+				'type' => 'number',
+				'id' => 'id_nomorhp',
+				'name' => 'nomor_hp',
 				'class' => 'form-control',
 				'required' => 'required'
 				];
 
-				$fakultas = [
-				'type' => 'text',
-				'id' => 'id_fakultas',
-				'name' => 'fakultas',
-				'class' => 'form-control',
-				'required' => 'required'
+				$level_akses = [
+					'id' => 'level-akses',
+					'class' => 'form-control',
+					'required' => 'required',
+					'name' => 'level_akses'
 				];
-				@endphp
 
-				<div class="form-group">
-					{{form_label('NIM Mahasiswa')}}
-					{{form_input($nim)}}
-				</div>
-				<div class="form-group">
-					{{form_label('Nama Mahasiswa')}}
-					{{form_input($nama)}}
-				</div>
-				<div class="form-group">
-					{{form_label('Jurusan')}}
-					{{form_input($jurusan)}}
-				</div>
-				<div class="form-group">
-					{{form_label('Fakultas')}}
-					{{form_input($fakultas)}}
-				</div>
+				$option_level = [
+					'admin' => 'Admin',
+					'user' => 'User'
+				];
+
+
+                @endphp
+                
+                <div class="form-group">
+                    {{form_label('Email')}}
+                    {{form_input($email)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Username')}}
+                    {{form_input($username)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Password')}}
+                    {{form_input($password)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Nama')}}
+                    {{form_input($nama)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Nomor Handphone')}}
+                    {{form_input($hp)}}
+                </div>
+                
+                <div class="form-group">
+                    {{form_label('Level Akses')}}
+					{{form_dropdown('level_akses',$option_level,'',$level_akses)}}
+                </div>
+
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
@@ -108,23 +145,39 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			{{form_open('',['id' => 'ubah-mahasiswa','role' => 'form'])}}
+			{{form_open('',['id' => 'ubah-akun','role' => 'form'])}}
 			<div class="modal-body">
 				@php
-				$id_mahasiswa = [
+				$id_user = [
 				'type' => 'hidden',
 				'id' => 'ubah-id',
-				'name' => 'id_mahasiswa',
+				'name' => 'id_user',
 				'class' => 'form-control',
 				'required' => 'required'
 				];
 
-				$nim = [
-				'type' => 'number',
-				'id' => 'ubah-nim',
-				'name' => 'nim',
+				$email = [
+				'type' => 'email',
+				'id' => 'ubah-email',
+				'name' => 'email',
 				'class' => 'form-control',
 				'required' => 'required'
+				];
+
+				$username = [
+				'type' => 'text',
+				'id' => 'ubah-username',
+				'name' => 'username',
+				'class' => 'form-control',
+				'required' => 'required'
+				];
+
+				$password = [
+				'type' => 'password',
+				'id' => 'ubah-password',
+				'name' => 'password',
+				'class' => 'form-control',				
+				'placeholder' => 'Ubah password jika ingin mengubahnya'
 				];
 
 				$nama = [
@@ -135,40 +188,58 @@
 				'required' => 'required'
 				];
 
-				$jurusan = [
-				'type' => 'text',
-				'id' => 'ubah-jurusan',
-				'name' => 'jurusan',
+				$hp = [
+				'type' => 'number',
+				'id' => 'ubah-nomorhp',
+				'name' => 'nomor_hp',
 				'class' => 'form-control',
 				'required' => 'required'
+				];
+				
+				$level_akses = [
+					'id' => 'ubah-level-akses',
+					'class' => 'form-control',	
+								
 				];
 
-				$fakultas = [
-				'type' => 'text',
-				'id' => 'ubah-fakultas',
-				'name' => 'fakultas',
-				'class' => 'form-control',
-				'required' => 'required'
+				$option_level = [
+					'admin' => 'Admin',
+					'user' => 'User'
 				];
+
 				@endphp
 
-				{{form_input($id_mahasiswa)}}
+				{{form_input($id_user)}}
 				<div class="form-group">
-					{{form_label('NIM Mahasiswa')}}
-					{{form_input($nim)}}
-				</div>
-				<div class="form-group">
-					{{form_label('Nama Mahasiswa')}}
-					{{form_input($nama)}}
-				</div>
-				<div class="form-group">
-					{{form_label('Jurusan')}}
-					{{form_input($jurusan)}}
-				</div>
-				<div class="form-group">
-					{{form_label('Fakultas')}}
-					{{form_input($fakultas)}}
-				</div>
+                    {{form_label('Email')}}
+                    {{form_input($email)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Username')}}
+                    {{form_input($username)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Password')}}
+                    {{form_input($password)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Nama')}}
+                    {{form_input($nama)}}
+                </div>
+
+                <div class="form-group">
+                    {{form_label('Nomor Handphone')}}
+                    {{form_input($hp)}}
+                </div>
+                
+                <div class="form-group">
+                    {{form_label('Level Akses')}}
+					{{form_dropdown('ubah_level_akses',$option_level,'',$level_akses)}}
+                </div>
+			
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
@@ -189,13 +260,13 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			{{form_open('',['id' => 'hapus-mahasiswa','role' => 'form'])}}
+			{{form_open('',['id' => 'hapus-akun','role' => 'form'])}}
 			<div class="modal-body">
 				@php
-				$id_mahasiswa = [
+				$id_user = [
 				'type' => 'hidden',
 				'id' => 'delete-id',
-				'name' => 'id_mahasiswa',
+				'name' => 'id_user',
 				'class' => 'form-control',
 				'required' => 'required'
 				];
@@ -203,7 +274,7 @@
 
 				@endphp
 
-				{{form_input($id_mahasiswa)}}
+				{{form_input($id_user)}}
 				<p>Apakah anda yakin ingin menghapus data ini ?</p>
 			</div>
 			<div class="modal-footer">
@@ -234,99 +305,100 @@
 			"pageLength": 10,
 		});
 
-		// $('#tambah-mahasiswa').submit('click', function () {
-		// 	$.ajax({
-		// 		type: 'POST',
-		// 		url: "{{base_url('admin/tambah_data')}}",
-		// 		data: new FormData(this),
-		// 		processData: false,
-		// 		contentType: false,
-		// 		cache: false,
-		// 		success: function (data) {
-		// 			$('#tambahModal').modal('hide');
-		// 			table.ajax.reload();
-		// 		},
-		// 		error: function (data) {
-		// 			table.ajax.reload();
-		// 		}
-		// 	});
-		// 	return false;
-		// });
+		$('#tambah-akun').submit('click', function () {
+			$.ajax({
+				type: 'POST',
+				url: "{{base_url('akun/tambah_data')}}",
+				data: new FormData(this),
+				processData: false,
+				contentType: false,
+				cache: false,
+				success: function (data) {
+					$('#tambahModal').modal('hide');
+					table.ajax.reload();
+				},
+				error: function (data) {
+					table.ajax.reload();
+				}
+			});
+			return false;
+		});
 
-		// $('.table-mahasiswa').on('click', '#get-ubahModal', function () {
-		// 	let id_mahasiswa = $(this).data('id');
-		// 	$.ajax({
-		// 		url: "{{base_url('admin/ambil_satu_data')}}",
-		// 		method: "POST",
-		// 		data: {
-		// 			id_mahasiswa: id_mahasiswa
-		// 		},
-		// 		dataType: "json",
-		// 		success: function (data) {
-		// 			$('#ubahModal').modal('show');
-		// 			$('#ubah-id').val(data.id);
-		// 			$('#ubah-nim').val(data.nim);
-		// 			$('#ubah-nama').val(data.nama);
-		// 			$('#ubah-jurusan').val(data.jurusan);
-		// 			$('#ubah-fakultas').val(data.fakultas);
-		// 		}
-		// 	})
-		// });
+		$('.table-akun').on('click', '#get-ubahModal', function () {
+			let id_user = $(this).data('id');
+			$.ajax({
+				url: "{{base_url('akun/ambil_satu_data')}}",
+				method: "POST",
+				data: {
+					id_user: id_user
+				},
+				dataType: "json",
+				success: function (data) {
+					$('#ubahModal').modal('show');
+					$('#ubah-id').val(data.id);
+					$('#ubah-email').val(data.email);
+					$('#ubah-username').val(data.username);
+					$('#ubah-nama').val(data.nama);
+					$('#ubah-nomorhp').val(data.nomor_hp)
+					$('#ubah-level-akses').val(data.level_akses);
+				}
+			})
+		});
 
-		// $('#ubah-mahasiswa').submit('click', function () {
-		// 	$.ajax({
-		// 		type: "POST",
-		// 		url: "{{base_url('admin/ubah_data')}}",
-		// 		data: new FormData(this),
-		// 		processData: false,
-		// 		contentType: false,
-		// 		cache: false,
-		// 		success: function (data) {
-		// 			$('#ubahModal').modal('hide');
-		// 			table.ajax.reload();
-		// 		},
-		// 		error: function (data) {
-		// 			table.ajax.reload();
-		// 		}
-		// 	});
-		// 	return false;
-		// });
+		$('#ubah-akun').submit('click', function () {
+			$.ajax({
+				type: "POST",
+				url: "{{base_url('akun/ubah_data')}}",
+				data: new FormData(this),
+				processData: false,
+				contentType: false,
+				cache: false,
+				success: function (data) {
+					$('#ubahModal').modal('hide');
+					table.ajax.reload();
+				},
+				error: function (data) {
+					table.ajax.reload();
+				}
+			});
+			return false;
+		});
 
-		// $('.table-mahasiswa').on('click', '#get-hapusModal', function () {
-		// 	let id_mahasiswa = $(this).data('id');
-		// 	$.ajax({
-		// 		url: "{{base_url('admin/ambil_satu_data')}}",
-		// 		method: "POST",
-		// 		data: {
-		// 			id_mahasiswa: id_mahasiswa
-		// 		},
-		// 		dataType: "json",
-		// 		success: function (data) {
-		// 			$('#hapusModal').modal('show');
-		// 			$('#delete-id').val(data.id);
-		// 		}
-		// 	})
+		$('.table-akun').on('click', '#get-hapusModal', function () {
+			let id_user = $(this).data('id');
+			$.ajax({
+				url: "{{base_url('akun/ambil_satu_data')}}",
+				method: "POST",
+				data: {
+					id_user: id_user
+				},
+				dataType: "json",
+				success: function (data) {
+					$('#hapusModal').modal('show');
+					$('#delete-id').val(data.id);
+				}
+			})
 
-		// });
+		});
 
-		// $('#hapus-mahasiswa').submit('click', function () {
-		// 	$.ajax({
-		// 		type: 'POST',
-		// 		url: "{{base_url('admin/hapus_data')}}",
-		// 		data: new FormData(this),
-		// 		processData: false,
-		// 		contentType: false,
-		// 		cache: false,
-		// 		success: function (data) {
-		// 			$('#hapusModal').modal('hide');
-		// 			table.ajax.reload();
-		// 		},
-		// 		error: function (data) {
-		// 			table.ajax.reload();
-		// 		}
-		// 	});
-		// 	return false;
-		// })
+		$('#hapus-akun').submit('click', function () {
+			$.ajax({
+				type: 'POST',
+				url: "{{base_url('akun/hapus_data')}}",
+				data: new FormData(this),
+				processData: false,
+				contentType: false,
+				cache: false,
+				success: function (data) {
+					$('#hapusModal').modal('hide');
+					table.ajax.reload();
+				},
+				error: function (data) {
+					table.ajax.reload();
+				}
+			});
+			return false;
+		})
 	});
 
 </script>

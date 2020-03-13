@@ -52,4 +52,52 @@ class Model_akun extends CI_Model
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
+
+    function tambahAkun()
+    {
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'email' => $this->input->post('email'),
+            'full_name' => $this->input->post('nama'),
+            'phone' => $this->input->post('nomor_hp'),
+            'role' => $this->input->post('level_akses')
+        );
+
+        $this->db->where('username',$data['username']);
+        $query = $this->db->get($this->table);
+        if($query->num_rows()>0)
+        {
+            return $this->db->inser('');
+        }else
+        {
+            return $this->db->insert($this->table,$data);
+        }
+    }
+
+    function ambilSatuData($id_user)
+    {
+        $this->db->where('id_user',$id_user);
+        return $this->db->get($this->table)->result();
+    }
+
+    function ubahData()
+    {
+        $id_user['id_user'] = $this->input->post('id_user');
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+            'email' => $this->input->post('email'),
+            'full_name' => $this->input->post('nama'),
+            'phone' => $this->input->post('nomor_hp'),
+            'role' => $this->input->post('ubah_level_akses')
+        );
+        return $this->db->update($this->table,$data,$id_user);
+    }
+
+    function hapusData()
+    {
+        $id_user['id_user'] = $this->input->post('id_user');
+        return $this->db->delete($this->table,$id_user);
+    }
 }

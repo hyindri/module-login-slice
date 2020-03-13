@@ -44,4 +44,41 @@ class Akun extends CI_Controller
         );
         echo json_encode($output);
     }
+
+    function tambah_data()
+    {
+        $data = $this->Model_akun->tambahAkun();
+        json_encode($data);
+    }
+
+    function ambil_satu_data()
+    {
+        $output = array();
+        $data = $this->Model_akun->ambilSatuData($this->input->post('id_user'));
+        foreach($data as $row)
+        {
+            $output['id']       = $row->id_user;
+            $output['email']    = $row->email;
+            $output['username'] = $row->username;
+            // $output['password'] = $row->password;
+            $output['nama'] = $row->full_name;   
+            $output['nomor_hp'] = $row->phone;
+            $output['level_akses'] = $row->role;
+        }
+        echo json_encode($output);
+    }
+
+    function ubah_data()
+    {
+        $data = $this->Model_akun->ubahData();
+        json_encode($data);
+    }
+
+    function hapus_data()
+    {
+        $data = $this->Model_akun->hapusData();
+        json_encode($data);
+    }
+
+
 }
